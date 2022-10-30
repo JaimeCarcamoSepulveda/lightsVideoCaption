@@ -76,26 +76,32 @@ select {
   }
 }
 
-.Container {
-  background-color: rgb(7, 2, 16);
+.vid-container {
   height: 100vh;
 }
 
-.iframeContainer {
-  display: flex;  
+#vid-introduction {
+  background: black url(./images/\ SilentFilmVideo.gif) no-repeat center;
+  height: 100vh;
+}
+
+
+#iframeContainer {  
   margin: 0 .75rem;
+  display: flex;
 
 }
-.iframeContainer iframe {
-  flex: 1;
+
+
+#iframeContainer iframe {
+ flex: 1;
 
 }
 
 .searchContainer {
-  background-color: rgb(7, 2, 16);
   display: flex; 
-  align-items: center; 
-  gap: .25em;
+  justify-content: start;
+  gap: .5em;
 }
 
 .search {
@@ -110,15 +116,74 @@ select {
 #button {
  font-size: 1.3rem;
  min-height: 1.875rem;
- padding: 0.33vw 0.5vw 0.4vw 0.5vw;
+ padding: 0.33vw 0.7vw;
  line-height: 78%;
  margin: 0.5rem 2rem 1rem 0;
 border-radius: 0 0.2rem 0.2rem 0;
  
 }
 
+.caption-container {
+  width: 95%;
+  margin: 1rem auto 2rem auto;
+}
+
 .caption {
- padding: 3.5rem;
- background-color: rgb(12, 29, 95);
+  width: 100%;
+  margin: 0 auto;
+  font-size: 1rem;
  color: whitesmoke;
+}
+
+.caption.nightMode {
+ width: 80%; 
+ margin: 0 auto;
+color: rgb(46, 40, 40);
+background-color:rgb(7, 2, 16); ;
+
+}
+
+
+
+
+
+.news-container {
+  border: none;
+  max-width: 100%;
+  margin: .9rem auto;
+  padding: .25em;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  
+
+
+}
+
+.card-content {
+  background-color: #666d86;
+  margin: .5em;
+  padding: .5em;
+  color: #1f4c43;
+  cursor: pointer;
+  transition: 500ms;
+  display: flex;
+  flex-flow: column wrap;
+  min-height:150px;
+
+}
+
+.card-content:hover, .card-content:focus {
+  margin: .1rem;
+}
+
+.card-btn {
+  text-decoration: none;
+  color: #1f4c43;
+  background-color: white;
+  padding: 1rem;
+  margin: auto;
+  display: inline-block;
+
+
 }
