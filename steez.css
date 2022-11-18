@@ -78,11 +78,14 @@ select {
 
 .vid-container {
   height: 100vh;
+  ;
 }
 
 #vid-introduction {
   background: black url(./images/\ SilentFilmVideo.gif) no-repeat center;
   height: 100vh;
+  margin: 0 .75rem;
+  border-radius: 20px;
 }
 
 
@@ -95,6 +98,7 @@ select {
 
 #iframeContainer iframe {
  flex: 1;
+ border-radius: 20px;
 
 }
 
@@ -116,7 +120,7 @@ select {
 #button {
  font-size: 1.3rem;
  min-height: 1.875rem;
- padding: 0.33vw 0.7vw;
+ padding: 0.4rem 0.6rem 0.3rem 0.6rem;
  line-height: 78%;
  margin: 0.5rem 2rem 1rem 0;
 border-radius: 0 0.2rem 0.2rem 0;
@@ -132,7 +136,7 @@ border-radius: 0 0.2rem 0.2rem 0;
   width: 100%;
   margin: 0 auto;
   font-size: 1rem;
- color: whitesmoke;
+  color: whitesmoke;
 }
 
 .caption.nightMode {
@@ -143,47 +147,221 @@ background-color:rgb(7, 2, 16); ;
 
 }
 
+#snippet-container {
+  background-color: rgba(154, 29, 15, 0);
+  position: absolute;
+  height: 2.4rem;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 1.4rem;
+  padding: .3rem;
+  top: 110px;
+  left: .8rem;
+}
+
+#snippet-container[data-visible] {
+  background-color: rgba(154, 29, 15, 0.471);
+  min-height: 44px;
+  height: fit-content;
+  
+}
+
+#snippet-container[data-visible]:hover, #snippet-container[data-visible]:focus {
+  text-overflow: ellipsis;  /* overflow ellipsis is not used at the moment but will come in handy once add and remove button are added when element is hovered*/
+}
 
 
 
+.snippet-item{
+  text-decoration: none;
+  font-weight: 800;
+  font-style: italic;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: beige;
+  background-color: rgba(33, 5, 5, 0.525);
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
+}
+
+.snippet-item.invisible {
+  display: none;
+  color: blue;
+}
+
+
+.snippet-item[data-animation] {
+  position: relative;
+  animation: snippet-slide 18s linear both infinite;
+
+} 
+
+
+.snippet-item[data-animation]:hover, .snippet-item[data-animation]:focus {
+    animation-play-state: paused;
+
+
+}
+
+.snippet-button {
+  display: flex;
+  flex-direction: row;
+  gap: .5rem;
+}
+
+#newsSnippetButtonAdd,#newsSnippetButtonRemove {
+  background-color: rgba(255, 0, 0, 0.174);
+  margin: 0 .2rem;
+  width: 3.8rem;
+  font-size: 1rem;
+  color: white;
+  align-items: center;
+  cursor: pointer;
+}
+
+#hyperlinkButton{
+  cursor: pointer;
+  color: #c0ae92;
+  background-color: rgba(245, 245, 245, 0.2);
+  transition: 250ms;
+}
+
+#hyperlinkButton:hover, #hyperlinkButton:focus {
+  cursor: pointer;
+  color: white;
+}
+
+
+#newsSnippetButtonRemove {
+  background-color: rgba(18, 51, 18, 0.86);
+ 
+}
+
+@keyframes snippet-slide {
+from { 
+ left: -70%;
+  }
+  to {
+ left: 100%;
+  
+  }
+}
+
+.results {
+  background-color: rgba(1, 0, 0, 0.861);
+  padding-bottom: 0%;
+  
+}
 
 .news-container {
-  border: none;
-  max-width: 100%;
-  margin: .9rem auto;
+  border: .5rem solid white;
+  max-width: 88%;
+  margin: 1.8rem auto .5rem auto;
   padding: .25em;
+  padding-bottom: 3rem;
   display: flex;
   flex-flow: column wrap;
   justify-content: space-between;
-  
-
-
+  align-items: center;
+  background-color: #080808;
+  transform: perspective(900px) rotateX(55deg);
 }
 
-.card-content {
-  background-color: #666d86;
-  margin: .5em;
-  padding: .5em;
-  color: #1f4c43;
-  cursor: pointer;
-  transition: 500ms;
+.news-box {
+  max-width: 93%;
+  align-self: center;
+  margin: -1.5rem auto .2rem auto;
+  height: 150px;
+  transform: perspective(900px) rotateX(-48deg);
+  background-color: azure;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+}
+
+.box-h1::after { 
+  content: 'TheGuardianNews';
+  display: block;
+  font-size: .8rem;
+  margin-top: -1.5rem;
+}
+
+
+.card-content{
+  display: flex;
+  width: 90%;
+  background-color: linear-gradient(to bottom, #c0ae92 0%, rgb(149, 146, 134) 33%,rgba(127, 89, 89, 0.839) 100%); 
+  background: url(./images/nwspa.png);
+  background-position: center;
+  transform: perspective(800px) rotateX(-43deg);
+  margin: -5.2rem .5em;
+  padding: 2rem 2rem;
+  color: #141210d4;
+  transition: 800ms;
   flex-flow: column wrap;
-  min-height:150px;
+  min-height:280px;
+  font-family: 'Noticia Text', serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 1.1rem;
+  border-top: 1px solid #22170cd4;
 
 }
+
+.card-content.invisible {
+  display: none;
+}
+
 
 .card-content:hover, .card-content:focus {
-  margin: .1rem;
+  background: linear-gradient(to bottom,rgba(169, 172, 180) 10%, rgb(24, 25, 27, 1) 100%);
+  padding: 1.2rem 4rem 1.2rem 4rem;
+  margin: 1rem 0 2rem -1rem;
+  align-self: center;
+  width: 104%;
+  height: 400px;
+  transform: perspective(400px) rotateX(-15deg);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1.2rem ;
+  color: beige;
+  text-decoration: none;
+
+
+}
+
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: .1rem;
+  padding-right: 1rem;
+}
+
+.card-type {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 2rem;
+  color: rgba(214, 203, 203, 0.347);
 }
 
 .card-btn {
   text-decoration: none;
-  color: #1f4c43;
-  background-color: white;
-  padding: 1rem;
-  margin: auto;
+  color: #040b0ad8;
+  background-color: rgba(106, 91, 64, 0.105);
+  padding: .8rem 1.5rem;
+  margin: .15rem 0;
   display: inline-block;
-
-
+  font-size: 1.2rem;
+  font-weight: 800;
+  background: linear-gradient(to bottom, rgba(193, 190, 180, 0.419) 93%,rgba(175, 150, 132, 0.573) 100%); 
+  transition: 250ms;
 }
+
+.card-btn:hover, .card-btn:focus {
+  cursor: pointer;
+  font-size: 1.4rem;
+  background-color: white;
+}
+ 
