@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+html { 
+  scroll-behavior: smooth;
+}
+
 /* Remove default margin */
 body,
 h1,
@@ -37,8 +41,34 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   background-color: rgb(7, 2, 16);
-
+  font-family: 'Montserrat', sans-serif;
 }
+
+
+/* Terms and conditions styling*/
+#terms-conditions {
+  color: white;
+  line-height: 1.5;
+  background-color: rgb(7, 2, 16);
+  font-family: 'Montserrat', sans-serif;
+  padding: 2rem;
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+#terms-conditions div {
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+#terms-conditions a {
+  text-decoration: none;
+  color: rgb(208, 201, 124);
+}
+
+/* end of Terms and Conditions styling */
+
+
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
@@ -76,6 +106,97 @@ select {
   }
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+header .nav-toggle {
+  position: absolute;
+  object-fit: cover;
+  aspect-ratio: 1;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  fill: azure;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  z-index: 8;
+  transform: rotate(0deg);
+  transition: transform 900ms ease-in-out;
+  
+}
+
+header .nav-toggle:hover {
+  background-color: rgba(136, 155, 174, 0.5);
+  fill: rgba(244, 240, 233, 0.861);
+  border-radius: 100%;
+  outline-color: blueviolet;
+}
+
+.nav_list {
+  width: 100%;
+  display: flex;
+}
+.nav_list ul {
+  position: fixed;
+  gap: 2rem;
+  inset: 0 0 0 45%;
+  padding: min(30vh, 9rem) 0rem;
+  margin: 0;
+  width: 55%;
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  backdrop-filter: blur(0.5rem);
+  background-color: rgba(87, 80, 80, 0.3);
+  transform: translateX(-140%) translateY(100%) scale(.4);
+  transition: transform 900ms ease-in-out;
+  z-index: 6;
+}
+/* Once clicked css changes with class "clicked"*/
+
+header .nav-toggle.clicked {
+  transform: rotate(180deg);
+  transition: transform 900ms ease-in-out;
+  position: fixed;
+}
+.nav_list ul.clicked {
+
+  transform: translateX(0%) translateY(0) scale(1);
+  transition: transform 900ms ease-in-out;
+}
+
+ .nav-items {
+  list-style: none;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.nav-items:hover {
+  background-color: rgb(52, 48, 48);
+  box-shadow: 0 30px 30px rgba(0, 0, 0, 0.3), 0px 0px 50px rgba(0, 0, 0, 0.2);
+  transition: all 250ms;
+}
+.nav_list .nav-items a {
+  text-decoration: none;
+  color: whitesmoke;
+  padding: .8rem 0;
+  font-size: 2rem;
+  display: block;
+  
+}
+
+.nav_list .nav-items a:hover {
+  text-shadow: 0 30px 30px rgba(0, 0, 0, 0.3);
+}
+
+
 .vid-container {
   height: 100vh;
   ;
@@ -102,50 +223,42 @@ select {
 
 }
 
-.searchContainer {
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+#start {
   display: flex; 
   justify-content: start;
   gap: .5em;
 }
 
 .search {
-  width: 55rem;
-  display: block;
-   margin: 0.5rem 0 1rem 2rem;
-   border-radius: 0.2rem;
+  width: 70vw;
+  height: 2.4rem;
+  min-height: 1.8rem;
+  display: inline;
+  border-radius: 10px;
+  margin-right: .5rem;
+}
 
-    
+input::placeholder {
+  padding-left: 2rem;
 }
 
 #button {
- font-size: 1.3rem;
- min-height: 1.875rem;
- padding: 0.4rem 0.6rem 0.3rem 0.6rem;
- line-height: 78%;
- margin: 0.5rem 2rem 1rem 0;
-border-radius: 0 0.2rem 0.2rem 0;
+font-size: 1rem;
+min-height: 1.475rem;
+aspect-ratio: 1;
+line-height: 78%;
+border-radius: 30%;
+cursor: pointer;
  
 }
 
-.caption-container {
-  width: 95%;
-  margin: 1rem auto 2rem auto;
-}
-
-.caption {
-  width: 100%;
-  margin: 0 auto;
-  font-size: 1rem;
-  color: whitesmoke;
-}
-
-.caption.nightMode {
- width: 80%; 
- margin: 0 auto;
-color: rgb(46, 40, 40);
-background-color:rgb(7, 2, 16); ;
-
-}
 
 #snippet-container {
   background-color: rgba(154, 29, 15, 0);
@@ -169,8 +282,6 @@ background-color:rgb(7, 2, 16); ;
 #snippet-container[data-visible]:hover, #snippet-container[data-visible]:focus {
   text-overflow: ellipsis;  /* overflow ellipsis is not used at the moment but will come in handy once add and remove button are added when element is hovered*/
 }
-
-
 
 .snippet-item{
   text-decoration: none;
@@ -220,18 +331,6 @@ background-color:rgb(7, 2, 16); ;
   cursor: pointer;
 }
 
-#hyperlinkButton{
-  cursor: pointer;
-  color: #c0ae92;
-  background-color: rgba(245, 245, 245, 0.2);
-  transition: 250ms;
-}
-
-#hyperlinkButton:hover, #hyperlinkButton:focus {
-  cursor: pointer;
-  color: white;
-}
-
 
 #newsSnippetButtonRemove {
   background-color: rgba(18, 51, 18, 0.86);
@@ -278,14 +377,22 @@ from {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 4rem;
 }
 
-.box-h1::after { 
-  content: 'TheGuardianNews';
+.news-box span {
+  color: rgba(0, 0, 0, 0.819);
+  text-shadow: 2px 2px 3px rgba(255,255,255,0.1);
+}
+
+#news-box--label::after { 
+  content: 'From The Guardian';
   display: block;
-  font-size: .8rem;
-  margin-top: -1.5rem;
+  font-size: .9rem;
+  margin-top: -.5rem;
+  padding-right: .5rem;
+  text-align: left;
 }
 
 
@@ -316,19 +423,22 @@ from {
 
 
 .card-content:hover, .card-content:focus {
-  background: linear-gradient(to bottom,rgba(169, 172, 180) 10%, rgb(24, 25, 27, 1) 100%);
-  padding: 1.2rem 4rem 1.2rem 4rem;
+  background: linear-gradient(to bottom,rgb(123, 125, 130) 10%, rgb(16, 18, 20) 100%);
+  padding: 1.2rem 3.8rem 1.2rem 3.8rem;
   margin: 1rem 0 2rem -1rem;
   align-self: center;
   width: 104%;
   height: 400px;
   transform: perspective(400px) rotateX(-15deg);
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 1.2rem ;
-  color: beige;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8rem;
+  color: rgb(243, 243, 172);
   text-decoration: none;
 
+}
 
+.card-title {
+  font-size: 2.3rem;
 }
 
 
@@ -343,7 +453,7 @@ from {
 .card-type {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 2rem;
-  color: rgba(214, 203, 203, 0.347);
+  color: rgba(213, 209, 151, 0.672);
 }
 
 .card-btn {
@@ -365,3 +475,167 @@ from {
   background-color: white;
 }
  
+
+/*-----------------------Section that instructs user how to use page ----------------------------*/
+.instruction-container, .about-container, .contact {
+  margin: 1rem auto 0 auto;
+  position: relative;
+  line-height: 1.8;
+  letter-spacing: 1.1;
+}
+.instruction-container{
+  min-height: 100vh;
+}
+
+
+.instruction, .about, .contact {
+  width: 95%;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  color: whitesmoke;
+  padding-bottom: 2.5rem;
+}
+
+
+.instruction a, .about a, .contact a {
+  text-decoration: none;
+  color: rgb(236, 197, 146);
+  font-weight: 900;
+}
+
+.instruction.nightMode, .about.nightMode {
+ width: 95%; 
+ margin: 0 auto;
+color: rgb(46, 40, 40);
+background-color:rgb(7, 2, 16); ;
+
+}
+
+.use-manual-container {
+  margin: 1rem auto 0 auto;
+  position: relative;
+  min-height: fit-content;
+  line-height: 1.8;
+  letter-spacing: 1.1;
+}
+
+.use-manual {
+  width: 95%;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  color: whitesmoke;
+  padding-bottom: 2.5rem;
+}
+
+
+/* ----Footer section of page ----------------*/
+
+#footer {
+  position: static;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+  background-color: rgba(255, 255, 255, 0.219);
+  display: flex;
+  font-size: 1.1rem;
+  margin: 0;  
+  padding: 0;
+}
+
+#footer div {
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  gap: 1rem;
+  color: rgb(148, 147, 127);
+}
+
+#copyright-icon {
+  width: 1.1rem;
+  object-fit: cover;
+  display: inline;
+  align-self: center;
+  background-color:rgb(148, 147, 127);
+  border-radius: 100px;
+}
+
+footer a {
+  text-decoration: none;
+  color: rgb(148, 147, 127);
+  font-weight: 700;
+  padding: 0 .4rem;
+}
+
+/* About section  */
+
+.about div input, .header-container.about div button  {
+  visibility: hidden;
+}
+
+.contact {
+  width: 95%;
+  padding: 0 1rem 2.5rem 1rem;
+}
+
+/*
+.about-container {
+  display: flex;
+  margin: 0 2rem;
+  gap: 1rem;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  
+}
+
+.about {
+  line-height: 2;
+}
+
+.about p {
+  gap: .4rem;
+}
+
+.about-container img {
+  scale: .8;
+  border-radius: 1rem;
+}
+*/
+
+.about-container .img {
+  width: 80%;
+  margin: auto;
+  padding-bottom: 2rem;
+}
+
+@media (min-width: 900px) {
+  .about-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      "about-text img"
+      "about-text about-text"
+      "about-text about-text"
+    ;
+    gap: 1rem;
+    margin: 2rem;
+  }
+  .about-container.about {
+    grid-area: about-text;
+    
+    z-index: 2;
+  }
+
+  .about-container .img {
+    margin-top: 4rem;
+
+  }
+
+  .about-container .img img {
+    border-radius: 1rem;
+    grid-area: img;
+    
+  }
+}

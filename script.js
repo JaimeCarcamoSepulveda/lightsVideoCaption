@@ -3,12 +3,45 @@ const search = document.body.querySelector('input');
 const button = document.getElementById('button');
 const iframe = document.querySelector('iframe');
 const iframeContainer = document.getElementById('iframeContainer');
-const caption = document.querySelector('.caption');
+const instruction = document.querySelector('.instruction');
 const resultsContainer = document.querySelector(`.results`);
 const newsContainer = document.querySelector(".news-container");
-const searchContainer = document.querySelector('.searchContainer');
+const headerContainer = document.querySelector('.header-container');
 const placeURL = document.querySelector('iframe').src;
 let fixedURL = null;
+
+
+
+
+
+
+/* navigation script */
+
+const toggleNav = document.querySelector("header .nav-toggle");
+const navMenu = document.querySelector(".nav_list ul");
+const navItems = document.querySelectorAll(".nav-items");
+const navLinks = document.querySelectorAll(".nav_links");
+
+toggleNav.addEventListener("click", getMenuToggle)
+
+function getMenuToggle() {
+   toggleNav.classList.toggle("clicked");
+   navMenu.classList.toggle("clicked");
+   navItems.classList.toggle("clicked");
+}
+
+navLinks.forEach(link => {
+   link.addEventListener("click", ()=> {
+      return getMenuToggle();
+      
+
+   })
+})
+
+
+
+
+
 
 //add old movie intro when enter key is pressed and alters youtube URL before adding to iframe src 
 search.addEventListener('keypress',(e) => {
@@ -16,7 +49,7 @@ search.addEventListener('keypress',(e) => {
    searchNow();
    initializeVideoIntro();
    return getNews();
-   }  
+   } 
 });
 
 button.addEventListener('click', searchNow);
@@ -133,11 +166,11 @@ function getNewsSnippet(newsSnippetArray) {
          let { newsSnippetItem: { href: webUrl, newsIndex, newsArray, webTitle, sectionName } } = newsSnippetArray[counter];
          let newsSnippetHTML = `
          <a class="snippet-item" data-newsIndex="${newsIndex}" data-newsArray="${newsArray}">${webTitle}, ${sectionName}
-         <span class="snippet-button" style = "opacity: 0"> <button id="hyperlinkButton" href="${webUrl}" target="_blank">Link</button><button id="newsSnippetButtonAdd">add</button><button id="newsSnippetButtonRemove">remove</button></span></a>
+         <span class="snippet-button" style = "opacity: 0"><button id="newsSnippetButtonAdd">add</button><button id="newsSnippetButtonRemove">remove</button></span></a> 
          `;
          snippetContainerVisible.innerHTML = newsSnippetHTML;
          //adjust width to news snippet text content size
-         let snippetWidth = (searchContainer.offsetWidth - 24) + `px`;
+         let snippetWidth = (headerContainer.offsetWidth - 24) + `px`;
          snippetContainerVisible.setAttribute(`style`,`width:${snippetWidth}`); 
          let snippetItem = document.querySelector('.snippet-item')/* returns 1st snippet item instance. Ok since snippet items are being replaced: only one exist a time */
          snippetItem.setAttribute("data-animation", ""); // here snippetAnimation will be set
@@ -284,7 +317,7 @@ window.addEventListener('resize', getSnippetWidth);
 //window.addEventListener('click', getSnippetWidth);
 
 function getSnippetWidth() {
-   let snippetWidth = (searchContainer.offsetWidth - 24) + `px`;
+   let snippetWidth = (headerContainer.offsetWidth - 24) + `px`;
    snippetContainer.setAttribute(`style`,`width:${snippetWidth}`); 
 }
 
@@ -301,8 +334,8 @@ const height = window.innerHeight;
  let videoWidth = iframe["width"]; 
  let videoHeight = iframe["height"]; 
 
-const caption = document.querySelector('.caption');
-let captionSize = caption.offsetWidth;
+const instruction = document.querySelector('.instruction');
+let instructionSize = instruction.offsetWidth;
 
 window.addEventListener('load', videoResizer);
 window.addEventListener('resize', videoResizer);
@@ -312,10 +345,10 @@ function videoResizer() {
    //videoHeightContainer = videoWidthContainer*0.5625;
     videoHeight = (width *0.5625) *.95;
     videoWidth = (videoHeight * 1.776) * .95;
-    captionSize = width * .75 + 'px';
+    instructionSize = width * .75 + 'px';
     //console.log(`video width is ${videoWidth} and video height is now ${videoHeight}`);
     //console.log(`videoContainer width is ${width} and videoContainer height is now ${height} `);
-   // console.log(`caption width size is ${captionSize}`)
+   // console.log(`instruction width size is ${instructionSize}`)
     
 }
 
@@ -348,3 +381,14 @@ const iframeContainer= document.querySelector('.iframeContainer');
  //let videoHeightContainer = iframeContainer.offsetHeight; 
 
 */
+
+
+
+
+
+
+
+
+
+
+
