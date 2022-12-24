@@ -140,7 +140,7 @@ header .nav-toggle:hover {
 }
 
 .nav_list {
-  width: 100%;
+  width: 20%;
   display: flex;
 }
 .nav_list ul {
@@ -162,6 +162,10 @@ header .nav-toggle:hover {
   z-index: 6;
 }
 /* Once clicked css changes with class "clicked"*/
+
+.nav_list.clicked {
+  width: 100%;
+}
 
 header .nav-toggle.clicked {
   transform: rotate(180deg);
@@ -618,4 +622,21 @@ footer a {
     grid-area: img;
     
   }
+}
+
+
+@media (max-width: 768px) {
+  #home {
+    display: flex;}
+
+  header .nav-toggle {
+    position: absolute;
+    object-fit: cover;
+    aspect-ratio: auto;
+    right: .5rem;
+    width: 3rem;
+    height: 3rem;
+    
+  }
+
 }

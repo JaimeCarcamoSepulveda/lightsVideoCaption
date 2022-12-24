@@ -18,6 +18,7 @@ let fixedURL = null;
 /* navigation script */
 
 const toggleNav = document.querySelector("header .nav-toggle");
+const navList = document.querySelector(".nav_list");
 const navMenu = document.querySelector(".nav_list ul");
 const navItems = document.querySelectorAll(".nav-items");
 const navLinks = document.querySelectorAll(".nav_links");
@@ -25,6 +26,7 @@ const navLinks = document.querySelectorAll(".nav_links");
 toggleNav.addEventListener("click", getMenuToggle)
 
 function getMenuToggle() {
+   navList.classList.toggle("clicked");
    toggleNav.classList.toggle("clicked");
    navMenu.classList.toggle("clicked");
    navItems.classList.toggle("clicked");
