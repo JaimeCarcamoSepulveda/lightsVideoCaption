@@ -11,10 +11,6 @@ const placeURL = document.querySelector('iframe').src;
 let fixedURL = null;
 
 
-
-
-
-
 /* navigation script */
 
 const toggleNav = document.querySelector("header .nav-toggle");
@@ -55,15 +51,31 @@ search.addEventListener('keypress',(e) => {
 });
 
 button.addEventListener('click', searchNow);
-/* take URL, make it an array. Remove ‘youtube’ portion add ‘you-tube’ return URL to src="" */
-function searchNow (e) {
+/*Updates URL to skip commercial */
+ function searchNow(e) {
+   //reset all variables from previous values assigned
    let originalURL = ''
-    originalURL = [...search.value];
-    originalURL.splice(16,0,'-');
-    fixedURL = originalURL.join('');
-    search.value = '';
-    return iframe.setAttribute('src', fixedURL);      
+   let secondPartURL = '';
+   let fixedCompleteURL = '';
+   originalURL = search.value;
+   const regex = /.be\//gmi;
+//if video is accessed with mobile device or URL acquired from playlist 
+   if(originalURL.match(regex)) {
+      const firstPartURL ='https://www.yout-ube.com/watch?v='
+      secondPartURL = originalURL.slice(17);
+      fixedCompleteURL = firstPartURL.concat(secondPartURL);
+      search.value = '';
+      return iframe.setAttribute('src', fixedCompleteURL);  
+   } else {
+      // if video is access with Desktop 
+      originalURL = [...search.value];
+      originalURL.splice(16,0,'-');
+      fixedURL = originalURL.join('');
+      search.value = '';
+      return iframe.setAttribute('src', fixedURL);      
+   }     
  }
+
 
 //when button is clicked a short gif will appear. Play once. then youtube video will display
  button.addEventListener('click', initializeVideoIntro);
