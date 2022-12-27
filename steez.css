@@ -349,19 +349,18 @@ cursor: pointer;
   }
   to { 
     left: -70%;
-     }
+  }
 }
 
-@media (max-width: 768px) {
 
+
+@media (max-width:768px) { 
   #snippet-container {
     font-size: 1.1rem;
   }
-
   .snippet-item {
     align-self: center;
   }
-
   .snippet-button {
     font-size: 1.1rem;
   }
@@ -373,7 +372,9 @@ cursor: pointer;
     to { 
      left: -100%;
       }
+    }
 }
+
 
 @media (max-width: 375px) {
   #snippet-container {
@@ -387,8 +388,8 @@ cursor: pointer;
     to { 
      left: -130%;
       }
+   }
 }
-
 
 .results {
   background-color: rgba(1, 0, 0, 0.861);
@@ -663,7 +664,8 @@ footer a {
 
 @media (max-width: 768px) {
   #home {
-    display: flex;}
+    display: flex;
+  }
 
   header .nav-toggle {
     position: absolute;
@@ -674,5 +676,4 @@ footer a {
     height: 3rem;
     
   }
-
 }
