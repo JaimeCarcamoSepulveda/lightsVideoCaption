@@ -296,7 +296,7 @@ cursor: pointer;
   font-style: italic;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   color: beige;
-  background-color: rgba(33, 5, 5, 0.525);
+  background-color: rgba(33, 5, 5, 0.3);
   display: flex;
   flex-direction: row;
   gap: 1rem;
@@ -318,7 +318,6 @@ cursor: pointer;
 
 .snippet-item[data-animation]:hover, .snippet-item[data-animation]:focus {
     animation-play-state: paused;
-
 
 }
 
@@ -345,14 +344,51 @@ cursor: pointer;
 }
 
 @keyframes snippet-slide {
-from { 
- left: -70%;
-  }
-  to {
+  from {
  left: 100%;
-  
   }
+  to { 
+    left: -70%;
+     }
 }
+
+@media (max-width: 768px) {
+
+  #snippet-container {
+    font-size: 1.1rem;
+  }
+
+  .snippet-item {
+    align-self: center;
+  }
+
+  .snippet-button {
+    font-size: 1.1rem;
+  }
+
+  @keyframes snippet-slide {
+    from {
+      left: 110%; 
+       }
+    to { 
+     left: -100%;
+      }
+}
+
+@media (max-width: 375px) {
+  #snippet-container {
+    font-size: .8rem;
+  }
+
+  @keyframes snippet-slide {
+    from {
+      left: 100%;
+       }
+    to { 
+     left: -130%;
+      }
+}
+
 
 .results {
   background-color: rgba(1, 0, 0, 0.861);
